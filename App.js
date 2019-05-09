@@ -17,7 +17,7 @@ export default class App extends Component<Props> {
     suggestions: []
   };
   onChangeText = text => {
-    const suggestions = getSuggestions(text.toLowerCase());
+    const suggestions = getSuggestions(text.trim().toLowerCase());
     console.log("suggestions", suggestions);
 
     this.setState({
@@ -41,7 +41,8 @@ export default class App extends Component<Props> {
           renderItem={({ item }) => (
             <View style={styles.item}>
               <Text>
-                {item.word}: [ {item.ipa}] {item.translation.join(" ")}
+                {item.word}: [ {item.ipa}]
+                {item.translation && item.translation.join(" ")}
               </Text>
             </View>
           )}
