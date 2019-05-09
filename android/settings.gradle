@@ -1,0 +1,3 @@
+rootProject.name = 'tiny_english_dictionary'
+
+include ':app'
