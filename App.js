@@ -9,13 +9,12 @@ import {
   FlatList
 } from "react-native";
 
-let getSuggestions;
+import getSuggestions from "./trie-service.js";
 
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    suggestions: [],
-    loaded: false
+    suggestions: []
   };
   onChangeText = text => {
     const suggestions = getSuggestions(text.trim().toLowerCase());
@@ -26,33 +25,18 @@ export default class App extends Component<Props> {
 
   keyExtractor = item => item.word;
 
-  componentDidMount() {
-    if (!this.state.loaded) {
-      getSuggestions = require("./trie-service.js");
-      console.log("loaded", getSuggestions);
-
-      this.setState({
-        loaded: true
-      });
-    }
-  }
-
   render() {
+    console.log("render");
     const suggestions = this.state.suggestions;
     return (
       <View style={styles.container}>
         <Text>Tiny english dictionary</Text>
-        <View style={{ display: this.state.loaded ? "none" : "flex" }}>
-          <Text>loading dictionary...</Text>
-        </View>
         <TextInput
           style={styles.input}
           onChangeText={this.onChangeText}
           autoFocus={true}
           autoCorrect={false}
-          autoCapitalize="none"
           placeholder="Input the word..."
-          editable={this.state.loaded}
         />
         <FlatList
           style={styles.list}
@@ -78,7 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF",
-    marginTop: 50
+    marginTop: 30
   },
   input: {
     width: "80%",

@@ -23,4 +23,4 @@ const getSuggestions = prefix => {
     });
 };
 
-module.exports = getSuggestions;
+export default getSuggestions;
