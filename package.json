@@ -6,7 +6,10 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "run-android": "react-native run-android",
-    "run-ios": "react-native run-ios"
+    "run-ios": "react-native run-ios",
+    "build-android-apk": "cd android && ./gradlew assembleRelease && cd ../",
+    "run-android-release": "react-native run-android --variant=release",
+    "release-android": "yarn build-android-apk && yarn run-android-release"
   },
   "dependencies": {
     "react": "16.8.3",

@@ -18,8 +18,6 @@ export default class App extends Component<Props> {
   };
   onChangeText = text => {
     const suggestions = getSuggestions(text.trim().toLowerCase());
-    console.log("suggestions", suggestions);
-
     this.setState({
       suggestions: suggestions
     });
