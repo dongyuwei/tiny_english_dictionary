@@ -30,8 +30,14 @@ export default class App extends Component<Props> {
     const suggestions = this.state.suggestions;
     return (
       <View style={styles.container}>
-        <Text>Input the word...</Text>
-        <TextInput style={styles.input} onChangeText={this.onChangeText} />
+        <Text>Tiny english dictionary</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={this.onChangeText}
+          autoFocus={true}
+          autoCorrect={false}
+          placeholder="Input the word..."
+        />
         <FlatList
           style={styles.list}
           data={suggestions}
