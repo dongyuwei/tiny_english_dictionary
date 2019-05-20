@@ -12,9 +12,11 @@
     "release-android": "yarn build-android-apk && yarn run-android-release"
   },
   "dependencies": {
+    "dawg-lookup": "^2.2.1",
+    "dictionary-en-us": "^2.1.1",
+    "nspell": "^2.1.2",
     "react": "16.8.3",
-    "react-native": "0.59.8",
-    "dawg-lookup": "^2.2.1"
+    "react-native": "0.59.8"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",

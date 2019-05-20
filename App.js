@@ -52,8 +52,8 @@ export default class App extends Component<Props> {
           renderItem={({ item }) => (
             <View style={styles.item}>
               <Text>
-                {item.word}: [ {item.ipa}]
-                {item.translation && item.translation.join(" ")}
+                {item.word}: {item.ipa ? "[ " + item.ipa + " ]" : ""}
+                {item.translation && " " + item.translation.join(" ")}
               </Text>
             </View>
           )}
