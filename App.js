@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 const getSuggestions = require("./trie-service.js");
+const keysWithPrefix = require("./trie-from-idiom.js").keysWithPrefix;
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -20,6 +21,22 @@ export default class App extends Component<Props> {
     text = text.trim().toLowerCase();
     if (text) {
       const suggestions = getSuggestions(text);
+      this.setState({
+        suggestions: suggestions
+      });
+    } else {
+      this.setState({
+        suggestions: []
+      });
+    }
+  };
+
+  onChangeText2 = text => {
+    text = text.trim().toLowerCase();
+    if (text) {
+      const suggestions = keysWithPrefix(text).map(item => {
+        return { word: item };
+      });
       this.setState({
         suggestions: suggestions
       });
@@ -45,6 +62,14 @@ export default class App extends Component<Props> {
           autoCapitalize="none"
           placeholder="Input the word..."
         />
+        <TextInput
+          style={styles.input}
+          onChangeText={this.onChangeText2}
+          autoFocus={true}
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="成语接龙..."
+        />
         <FlatList
           style={styles.list}
           data={suggestions}
@@ -52,7 +77,7 @@ export default class App extends Component<Props> {
           renderItem={({ item }) => (
             <View style={styles.item}>
               <Text>
-                {item.word}: {item.ipa ? "[ " + item.ipa + " ]" : ""}
+                {item.word} {item.ipa ? " [ " + item.ipa + " ]" : " "}
                 {item.translation && " " + item.translation.join(" ")}
               </Text>
             </View>

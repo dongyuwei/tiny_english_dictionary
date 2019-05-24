@@ -4269,6 +4269,11 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
+node-ternary-search-trie@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/node-ternary-search-trie/-/node-ternary-search-trie-5.4.3.tgz#452dd2549a7d70ed2802016e7a6987ca4f1a3011"
+  integrity sha512-DbCM1O2qNShPmWHqno+z39GNgk6LNfFImjkjn6jZM6lgyAwWrFNiOzIQb2wGJ2NprjRlJWS6GAufkuvr+s+pBA==
+
 nopt@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
