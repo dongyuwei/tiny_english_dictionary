@@ -17,7 +17,6 @@
     "node-ternary-search-trie": "^5.4.3",
     "react": "16.9.0",
     "react-native": "0.61.2",
-    "tiny-trie-js": "^1.0.3",
     "typo-js": "^1.0.3"
   },
   "devDependencies": {
