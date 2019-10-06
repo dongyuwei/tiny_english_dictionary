@@ -1910,6 +1910,11 @@ data-urls@^1.0.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
+dawg-lookup@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/dawg-lookup/-/dawg-lookup-2.2.1.tgz#a1f361c6039993c4e2942bdc361012532447804b"
+  integrity sha1-ofNhxgOZk8TilCvcNhASUyRHgEs=
+
 dayjs@^1.8.15:
   version "1.8.16"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.16.tgz#2a3771de537255191b947957af2fd90012e71e64"
@@ -4502,6 +4507,11 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
+node-ternary-search-trie@^5.4.3:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/node-ternary-search-trie/-/node-ternary-search-trie-5.5.0.tgz#9d41d7329a7260e2d2af6dcff78c82c20244e1bb"
+  integrity sha512-1WTyJNOa+uHshQg1cz3Vdx/ULCFfJDZ/VDNvArz+6EhtTFXsy6DMzOsjosbQm5wN5m9xhb0GaLdUkZEUlsjs6Q==
+
 nopt@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
@@ -5971,6 +5981,11 @@ time-stamp@^1.0.0:
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.1.0.tgz#764a5a11af50561921b133f3b44e618687e0f5c3"
   integrity sha1-dkpaEa9QVhkhsTPztE5hhofg9cM=
 
+tiny-trie-js@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-trie-js/-/tiny-trie-js-1.0.3.tgz#f198883d86e84b07b3929fe09a77d75ac7c04eac"
+  integrity sha512-xAPUwC7a9fepixKwz5D6dWwFTNiAZtdlPlGkhOqdgVpIyVvLOwsFfrrWkyTWI0DSZh5TPo8W6Bm4gWkX1htOog==
+
 tmp@^0.0.33:
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.33.tgz#6d34335889768d21b2bcda0aa277ced3b1bfadf9"
@@ -6081,6 +6096,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typo-js@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/typo-js/-/typo-js-1.0.3.tgz#54d8ebc7949f1a7810908b6002c6841526c99d5a"
+  integrity sha1-VNjrx5SfGngQkItgAsaEFSbJnVo=
 
 ua-parser-js@^0.7.18:
   version "0.7.20"

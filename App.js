@@ -1,114 +1,111 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, {Component} from 'react';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList} from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const getSuggestions = require('./trie-service.js');
+const keysWithPrefix = require('./trie-from-idiom.js');
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+type Props = {};
+export default class App extends Component<Props> {
+  state = {
+    suggestions: [],
+  };
+  onChangeText = text => {
+    text = text.trim().toLowerCase();
+    if (text) {
+      const suggestions = getSuggestions(text);
+      this.setState({
+        suggestions: suggestions,
+      });
+    } else {
+      this.setState({
+        suggestions: [],
+      });
+    }
+  };
+
+  onChangeText2 = text => {
+    text = text.trim().toLowerCase();
+    if (text) {
+      const suggestions = keysWithPrefix(text).map(item => {
+        return {word: item};
+      });
+      this.setState({
+        suggestions: suggestions,
+      });
+    } else {
+      this.setState({
+        suggestions: [],
+      });
+    }
+  };
+
+  keyExtractor = item => item.word;
+
+  render() {
+    const suggestions = this.state.suggestions;
+    return (
+      <View style={styles.container}>
+        <Text>Tiny english dictionary</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={this.onChangeText}
+          autoFocus={true}
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="Input the word..."
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={this.onChangeText2}
+          autoFocus={true}
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="成语接龙..."
+        />
+        <FlatList
+          style={styles.list}
+          data={suggestions}
+          keyExtractor={this.keyExtractor}
+          renderItem={({item}) => (
+            <View style={styles.item}>
+              <Text>
+                {item.word} {item.ipa ? ' [ ' + item.ipa + ' ]' : ' '}
+                {item.translation && ' ' + item.translation.join(' ')}
+              </Text>
             </View>
           )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    marginTop: 30,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  input: {
+    width: '80%',
+    borderWidth: 1,
+    borderColor: '#eee',
+    borderRadius: 5,
+    margin: 10,
   },
-  body: {
-    backgroundColor: Colors.white,
+  list: {
+    marginTop: 5,
+    marginRight: 5,
+    marginBottom: 30,
+    marginLeft: 5,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  item: {
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+    paddingBottom: 3,
+    marginBottom: 5,
   },
 });
-
-export default App;
