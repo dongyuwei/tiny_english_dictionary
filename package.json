@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "node --max_old_space_size=36000 node_modules/react-native/cli.js run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "build-android-apk": "cd android && ./gradlew assembleRelease && cd ../",
