@@ -15,7 +15,6 @@ let words;
 const getSuggestions = async prefix => {
   if(!words) {
     words = await loadLocalResource(dictResource).then(content => {
-      console.log("dictResource was loaded: ");
       return JSON.parse(content);
     });
   }

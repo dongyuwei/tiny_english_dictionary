@@ -1,6 +1,6 @@
 {
   "name": "tiny_english_dictionary",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "android": "node --max_old_space_size=36000 node_modules/react-native/cli.js run-android",
