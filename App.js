@@ -10,10 +10,10 @@ export default class App extends Component<Props> {
   state = {
     suggestions: [],
   };
-  onChangeText = text => {
+  onChangeText = async text => {
     text = text.trim().toLowerCase();
     if (text) {
-      const suggestions = getSuggestions(text);
+      const suggestions = await getSuggestions(text);
       this.setState({
         suggestions: suggestions,
       });

@@ -6,6 +6,9 @@
  */
 
 module.exports = {
+  resolver: {
+    assetExts: ['txt'],
+  },
   transformer: {
     getTransformOptions: async () => ({
       transform: {
