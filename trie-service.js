@@ -1,19 +1,16 @@
 const PTrie = require('dawg-lookup/lib/ptrie').PTrie;
-// const words = require('./words_with_frequency_and_translation_and_ipa.json');
 import loadLocalResource from 'react-native-local-resource';
 import dictResource from './words_with_frequency_and_translation_and_ipa.txt';
 
 const packed = require('./packed.json').content;
 const spellchecker = require('./spell-checker.js');
 
-
-
 const ptrie = new PTrie(packed);
 
 let words;
 
 const getSuggestions = async prefix => {
-  if(!words) {
+  if (!words) {
     words = await loadLocalResource(dictResource).then(content => {
       return JSON.parse(content);
     });
