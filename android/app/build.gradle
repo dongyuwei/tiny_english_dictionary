@@ -127,6 +127,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    packagingOptions {
+        // Make sure libjsc.so does not packed in APK
+        exclude "**/libjsc.so"
+    }
+ 
+
     defaultConfig {
         applicationId "com.tiny_english_dictionary"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -182,6 +188,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    // Add v8-android - prebuilt libv8android.so into APK 
+    implementation 'org.chromium:v8-android:+'
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
