@@ -58,7 +58,7 @@ export default class App extends Component<Props> {
         <TextInput
           style={styles.input}
           onChangeText={this.onChangeText2}
-          autoFocus={true}
+          autoFocus={false}
           autoCorrect={false}
           autoCapitalize="none"
           placeholder="成语接龙..."
