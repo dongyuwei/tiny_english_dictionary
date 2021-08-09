@@ -3,14 +3,14 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, FlatList} from 'react-native';
 
 const getSuggestions = require('./trie-service.js');
-const keysWithPrefix = require('./trie-from-idiom.js');
+const idiomsOfInput = require('./trie-from-idiom.js');
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends PureComponent {
   state = {
     suggestions: [],
   };
-  onChangeText = text => {
+
+  onChangeText = (text) => {
     text = text.trim().toLowerCase();
     if (text) {
       const suggestions = getSuggestions(text);
@@ -24,10 +24,10 @@ export default class App extends Component<Props> {
     }
   };
 
-  onChangeText2 = text => {
+  onChangeText2 = (text) => {
     text = text.trim().toLowerCase();
     if (text) {
-      const suggestions = keysWithPrefix(text).map(item => {
+      const suggestions = idiomsOfInput(text).map((item) => {
         return {word: item};
       });
       this.setState({
@@ -40,7 +40,7 @@ export default class App extends Component<Props> {
     }
   };
 
-  keyExtractor = item => item.word;
+  keyExtractor = (item) => item.word;
 
   render() {
     const suggestions = this.state.suggestions;

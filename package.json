@@ -3,8 +3,8 @@
   "version": "0.0.3",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "run-android": "react-native run-android",
+    "run-ios": "react-native run-ios",
     "start": "react-native start",
     "build-android-apk": "cd android && ./gradlew assembleRelease && cd ../",
     "run-android-release": "react-native run-android --variant=release",
@@ -14,9 +14,9 @@
   },
   "dependencies": {
     "dawg-lookup": "^2.2.1",
-    "node-ternary-search-trie": "^5.4.3",
     "react": "16.9.0",
     "react-native": "0.61.2",
+    "tiny-trie": "^0.2.6",
     "typo-js": "^1.0.3"
   },
   "devDependencies": {
