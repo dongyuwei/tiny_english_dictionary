@@ -8,6 +8,7 @@ Built by react-native.
 2. instant spell-check when typing
 3. show IPA of inputed word
 4. 成语接龙
+5. 支持输入汉语拼音查找英语单词
 
 ### dev
 
