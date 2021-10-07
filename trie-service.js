@@ -5,7 +5,7 @@ const spellchecker = require('./spell-checker.js');
 
 const ptrie = new PTrie(packed);
 
-const getSuggestions = prefix => {
+const getSuggestions = (prefix) => {
   let suggestion = ptrie
     .completions(prefix)
     .sort((a, b) => {
@@ -15,7 +15,7 @@ const getSuggestions = prefix => {
       );
     })
     .slice(0, 30)
-    .map(word => {
+    .map((word) => {
       return {
         ...words[word],
         word,
@@ -25,7 +25,7 @@ const getSuggestions = prefix => {
   if (suggestion.length === 0) {
     suggestion = spellchecker.suggest(prefix);
     if (suggestion.length > 0) {
-      suggestion = suggestion.map(item => {
+      suggestion = suggestion.map((item) => {
         return {
           ...words[item],
           word: item.toLowerCase(),

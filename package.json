@@ -10,7 +10,8 @@
     "run-android-release": "react-native run-android --variant=release",
     "release-android": "yarn build-android-apk && yarn run-android-release",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "yarn prettier --write *.js"
   },
   "dependencies": {
     "dawg-lookup": "^2.2.1",
