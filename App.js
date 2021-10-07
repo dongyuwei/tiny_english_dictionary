@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
 import {StyleSheet, Text, View, TextInput, FlatList} from 'react-native';
 
@@ -10,7 +10,7 @@ export default class App extends PureComponent {
     suggestions: [],
   };
 
-  onChangeText = (text) => {
+  onChangeText = text => {
     text = text.trim().toLowerCase();
     if (text) {
       const suggestions = getSuggestions(text);
@@ -24,10 +24,10 @@ export default class App extends PureComponent {
     }
   };
 
-  onChangeText2 = (text) => {
+  onChangeText2 = text => {
     text = text.trim().toLowerCase();
     if (text) {
-      const suggestions = idiomsOfInput(text).map((item) => {
+      const suggestions = idiomsOfInput(text).map(item => {
         return {word: item};
       });
       this.setState({
@@ -40,7 +40,7 @@ export default class App extends PureComponent {
     }
   };
 
-  keyExtractor = (item) => item.word;
+  keyExtractor = item => item.word;
 
   render() {
     const suggestions = this.state.suggestions;

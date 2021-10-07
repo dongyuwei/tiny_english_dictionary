@@ -1,7 +1,7 @@
-import tinyTrie from 'tiny-trie';
+const TinyTrie = require('tiny-trie');
 const idioms = require('./idiom.json');
 
-const trie = tinyTrie.createSync(idioms);
+const trie = TinyTrie.createSync(idioms);
 module.exports = function idiomsOfInput(input) {
   return trie
     .search(input, {prefix: true})
