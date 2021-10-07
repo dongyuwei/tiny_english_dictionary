@@ -5,15 +5,22 @@ import {StyleSheet, Text, View, TextInput, FlatList} from 'react-native';
 const getSuggestions = require('./trie-service.js');
 const idiomsOfInput = require('./trie-from-idiom.js');
 
+const pinyinDict = require('./cedict.json');
+
 export default class App extends PureComponent {
   state = {
     suggestions: [],
   };
 
-  onChangeText = text => {
+  onChangeText = (text) => {
     text = text.trim().toLowerCase();
     if (text) {
-      const suggestions = getSuggestions(text);
+      let suggestions = getSuggestions(text);
+      if (text.length >= 3 && pinyinDict[text]) {
+        suggestions = pinyinDict[text]
+          .map((item) => ({word: item}))
+          .concat(suggestions);
+      }
       this.setState({
         suggestions: suggestions,
       });
@@ -24,10 +31,10 @@ export default class App extends PureComponent {
     }
   };
 
-  onChangeText2 = text => {
+  onChangeText2 = (text) => {
     text = text.trim().toLowerCase();
     if (text) {
-      const suggestions = idiomsOfInput(text).map(item => {
+      const suggestions = idiomsOfInput(text).map((item) => {
         return {word: item};
       });
       this.setState({
@@ -40,7 +47,7 @@ export default class App extends PureComponent {
     }
   };
 
-  keyExtractor = item => item.word;
+  keyExtractor = (item) => item.word;
 
   render() {
     const suggestions = this.state.suggestions;
